@@ -14,9 +14,9 @@ export function validateFullName(name: string): boolean {
 }
 
 export function validatePhone(phone: string): boolean {
-  // Indian phone number: 10 digits, optional +91 prefix
-  const phoneRegex = /^(\+91\s?)?[6-9]\d{9}$/;
-  return phoneRegex.test(phone.replace(/\s/g, ''));
+  // Indian phone number: exactly 10 digits
+  const cleaned = phone.replace(/\D/g, '');
+  return cleaned.length === 10 && /^[6-9]\d{9}$/.test(cleaned);
 }
 
 export function validateEmail(email: string): boolean {

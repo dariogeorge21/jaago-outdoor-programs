@@ -54,7 +54,7 @@ export function RegistrationForm({
           phone: data.phone.trim(),
           email: data.email.trim().toLowerCase(),
           state: data.state.trim(),
-          questions: data.questions.trim(),
+          questions: data.questions?.trim() || '',
         },
       ]);
 
@@ -103,8 +103,7 @@ export function RegistrationForm({
           Register for {eventName}
         </h2>
         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-          Please fill out the form below to complete your registration. All
-          fields are required.
+          Please fill out the form below to complete your registration.
         </p>
       </div>
 
@@ -158,7 +157,7 @@ export function RegistrationForm({
             <Input
               label="Phone Number"
               type="tel"
-              placeholder="+91 12345 67890"
+              placeholder="1234567890"
               icon={
                 <svg
                   className="w-5 h-5"
@@ -178,11 +177,11 @@ export function RegistrationForm({
               {...register('phone', {
                 required: 'Please enter a valid phone number',
                 validate: (value) =>
-                  validatePhone(value) || 'Please enter a valid phone number',
+                  validatePhone(value) || 'Please enter exactly 10 digits',
                 onBlur: () => trigger('phone'),
               })}
               error={errors.phone?.message}
-              helperText="Indian phone number format (10 digits)"
+              helperText="Enter 10 digits (e.g., 1234567890)"
               required
             />
           </div>
@@ -253,7 +252,7 @@ export function RegistrationForm({
         <div className="pt-6 border-t border-gray-200">
           <div className="mb-6">
             <h3 className="text-xl font-bold text-gray-900 mb-1">
-              Questions or Topics
+              Questions or Topics <span className="text-sm font-normal text-gray-500">(Optional)</span>
             </h3>
             <p className="text-sm text-gray-500">
               Share any questions, doubts, or topics you'd like to discuss
@@ -262,7 +261,7 @@ export function RegistrationForm({
 
           <Textarea
             label=""
-            placeholder="Share any questions, doubts, or topics you'd like to discuss with the Bishop..."
+            placeholder="Share any questions, doubts, or topics you'd like to discuss with the Bishop... (Optional)"
             rows={6}
             icon={
               <svg
@@ -281,15 +280,19 @@ export function RegistrationForm({
               </svg>
             }
             {...register('questions', {
-              required: 'Please share at least one question or topic',
-              validate: (value) =>
-                validateQuestions(value) ||
-                'Please share at least one question or topic (minimum 10 characters)',
+              validate: (value) => {
+                if (!value || value.trim().length === 0) {
+                  return true; // Optional field, empty is valid
+                }
+                return (
+                  validateQuestions(value) ||
+                  'If provided, please share at least 10 characters'
+                );
+              },
               onBlur: () => trigger('questions'),
             })}
             error={errors.questions?.message}
-            helperText="Minimum 10 characters required"
-            required
+            helperText="Optional - Share any questions or topics you'd like to discuss"
           />
         </div>
 
