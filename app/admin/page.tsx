@@ -1,10 +1,12 @@
 'use client';
 
+export const dynamic = 'force-dynamic';
+
 import { useEffect, useState } from 'react';
 import { AuthGuard } from '@/components/admin/AuthGuard';
 import { AdminHeader } from '@/components/admin/AdminHeader';
 import { RegistrationTable } from '@/components/admin/RegistrationTable';
-import { supabase } from '@/lib/supabase';
+import { createBrowserClient } from '@/lib/supabase';
 import { RegistrationData } from '@/types/registration';
 import { events } from '@/lib/events';
 import { toast } from 'sonner';
@@ -22,6 +24,7 @@ export default function AdminDashboard() {
       try {
         const allRegistrations: { [key: string]: RegistrationData[] } = {};
 
+        const supabase = createBrowserClient();
         for (const event of events) {
           const { data, error } = await supabase
             .from(event.tableName)
