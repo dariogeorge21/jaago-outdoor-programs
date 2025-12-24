@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
-import { supabase } from '@/lib/supabase';
+import { createBrowserClient } from '@/lib/supabase';
 import { RegistrationData } from '@/types/registration';
 import {
   validateFullName,
@@ -48,6 +48,7 @@ export function RegistrationForm({
     setIsSubmitting(true);
 
     try {
+      const supabase = createBrowserClient();
       const { error } = await supabase.from(tableName).insert([
         {
           full_name: data.full_name.trim(),
