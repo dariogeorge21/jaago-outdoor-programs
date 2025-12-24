@@ -22,9 +22,9 @@ export default function AdminDashboard() {
     async function fetchRegistrations() {
       setIsLoading(true);
       try {
+        const supabase = createBrowserClient();
         const allRegistrations: { [key: string]: RegistrationData[] } = {};
 
-        const supabase = createBrowserClient();
         for (const event of events) {
           const { data, error } = await supabase
             .from(event.tableName)
@@ -54,38 +54,62 @@ export default function AdminDashboard() {
 
   return (
     <AuthGuard>
-      <div className="min-h-screen bg-stone-50">
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
         <AdminHeader />
         <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          {/* Dashboard Header */}
+          <div className="mb-8">
+            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+              Registration Dashboard
+            </h1>
+            <p className="text-gray-600">
+              View and manage all event registrations
+            </p>
+          </div>
+
+          {/* Tabs */}
           <div className="mb-8">
             <div className="border-b border-gray-200">
-              <nav className="-mb-px flex space-x-8">
-                {events.map((event, index) => (
-                  <button
-                    key={event.slug}
-                    onClick={() => setActiveTab(index)}
-                    className={`py-4 px-1 border-b-2 font-medium text-sm transition-colors ${
-                      activeTab === index
-                        ? 'border-amber-600 text-amber-600'
-                        : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-                    }`}
-                  >
-                    {event.name}
-                    {registrations[event.tableName] && (
-                      <span className="ml-2 bg-amber-100 text-amber-800 py-1 px-2 rounded-full text-xs">
-                        {registrations[event.tableName].length}
+              <nav className="-mb-px flex space-x-2 overflow-x-auto">
+                {events.map((event, index) => {
+                  const count = registrations[event.tableName]?.length || 0;
+                  return (
+                    <button
+                      key={event.slug}
+                      onClick={() => setActiveTab(index)}
+                      className={`flex items-center gap-3 px-6 py-4 border-b-2 font-semibold text-sm transition-all whitespace-nowrap ${
+                        activeTab === index
+                          ? 'border-amber-600 text-amber-600 bg-amber-50/50'
+                          : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                      }`}
+                    >
+                      <span>{event.name}</span>
+                      <span
+                        className={`inline-flex items-center justify-center min-w-[24px] h-6 px-2 rounded-full text-xs font-bold ${
+                          activeTab === index
+                            ? 'bg-amber-600 text-white'
+                            : 'bg-gray-200 text-gray-700'
+                        }`}
+                      >
+                        {count}
                       </span>
-                    )}
-                  </button>
-                ))}
+                    </button>
+                  );
+                })}
               </nav>
             </div>
           </div>
 
+          {/* Content */}
           {isLoading ? (
-            <div className="text-center py-12">
-              <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-amber-600 border-r-transparent"></div>
-              <p className="mt-4 text-gray-600">Loading registrations...</p>
+            <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-12">
+              <div className="text-center">
+                <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-solid border-amber-600 border-r-transparent mb-4"></div>
+                <p className="text-lg font-semibold text-gray-900 mb-2">
+                  Loading registrations...
+                </p>
+                <p className="text-gray-500">Please wait while we fetch the data</p>
+              </div>
             </div>
           ) : (
             <RegistrationTable
@@ -100,4 +124,3 @@ export default function AdminDashboard() {
     </AuthGuard>
   );
 }
-
