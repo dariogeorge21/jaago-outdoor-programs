@@ -1,182 +1,156 @@
-Here’s a **clean, enhanced, AI-IDE–ready prompt** you can directly paste into Cursor / Copilot / any AI coding IDE. It’s structured, unambiguous, and implementation-focused, without over-explaining.
+Build a modern, responsive outdoor event webpage for "Jaago Outdoor" - a church program featuring three sub-events. Each sub-event has its own registration form that submits to a separate Supabase table.
 
 ---
 
-## 🔹 AI IDE PROMPT — Jaago Outdoor Event Web Page
+## Tech Stack Requirements
 
-Build a **modern, clean, and responsive outdoor event webpage** for a church program named **“Jaago Outdoor”**.
-
-### Tech Stack
-
-* **Frontend:** Next.js (App Router)
-* **Styling:** Tailwind CSS
-* **Backend & DB:** Supabase
-* **Forms:** Controlled components with validation
-* **Admin Access:** Supabase-auth protected admin panel
+- **Framework:** Next.js (App Router)
+- **Styling:** Tailwind CSS
+- **Backend/Database:** Supabase
+- **Forms:** React controlled components with client-side validation
+- **Authentication:** Supabase Auth for admin panel
 
 ---
 
-## 🌿 Page Purpose
+## Page Structure & Implementation
 
-This page promotes **three major sub-events** under *Jaago Outdoor*.
-Each sub-event has:
+### 1. Hero Section
+Create a hero section with:
+- Event name: "Jaago Outdoor"
+- Tagline emphasizing fellowship, faith, and community
+- Warm, outdoor aesthetic with clean typography, soft shadows, and subtle animations
 
-* A poster image
-* Title
-* Description
-* Highlights
-* CTA button
-* A **custom registration form**
-* Backend submission to **separate Supabase tables**
-
----
-
-## 🧩 Page Structure
-
-### 1️⃣ Hero Section
-
-* Event Name: **Jaago Outdoor**
-* Short tagline emphasizing fellowship, faith, and community
-* Outdoor / warm aesthetic
-* Clean typography, soft shadows, subtle animations
+### 2. Events Section (3 Event Cards)
+Display three events as cards or full-width sections with:
+- **Layout:** Image on left, content on right (stack vertically on mobile)
+- **Each card contains:** Poster image, title, description, bullet-point highlights, CTA button
 
 ---
 
-## 2️⃣ Events Section (3 Sections)
+## Event Details
 
-Each event should be displayed as a **card or full-width section** with:
+### Event 1: Coffee with Bishop
+- **Poster path:** `/public/bishop.png`
+- **Description:** "An intimate gathering where faith meets fellowship. Share your thoughts, ask questions, and connect with our spiritual leader over a warm cup of coffee."
+- **Highlights:**
+  - Chat with a Bishop for over 30 minutes
+  - Clarify doubts and deepen your love for God and the Church
+  - Connect with fellow believers and strengthen your faith community
+  - Come with an open heart and leave inspired
+- **CTA:** "Book Your Spot" or "Register Now"
+- **Registration route:** `/register/coffee-with-bishop`
+- **Supabase table:** `coffee_with_bishop_registrations`
 
-* Left: Poster image
-* Right: Content + CTA
-* Responsive stacking on mobile
+### Event 2: Meet the Strangers
+- **Poster path:** `/public/bishop.png`
+- **Description:** "Meet the strangers—connect, converse, and discover new perspectives through an interactive and welcoming session."
+- **CTA:** "Register Now"
+- **Registration route:** `/register/meet-the-strangers`
+- **Supabase table:** `meet_the_strangers_registrations`
 
----
-
-### 🟤 Event 1: Coffee with Bishop
-
-**Poster:** `/public/bishop.png`
-
-**Description:**
-An intimate gathering where faith meets fellowship. Share your thoughts, ask questions, and connect with our spiritual leader over a warm cup of coffee.
-
-**Highlights (bullet points):**
-
-* Chat with a Bishop for over 30 minutes
-* Clarify doubts and deepen your love for God and the Church
-* Connect with fellow believers and strengthen your faith community
-* Come with an open heart and leave inspired
-
-**CTA Button:**
-👉 *Book Your Spot / Register Now*
-
----
-
-### 🟤 Event 2: Meet the Strangers
-
-**Poster:** `/public/bishop.png`
-
-**Description:**
-Meet the strangers—connect, converse, and discover new perspectives through an interactive and welcoming session.
-
-**CTA Button:**
-👉 *Register Now*
+### Event 3: Blessed Banquet
+- **Poster path:** `/public/bishop.png`
+- **Description:** "An exclusive dinner gathering fostering faith and fellowship, offering an opportunity to engage in meaningful dialogue with our spiritual leader."
+- **CTA:** "Register Now"
+- **Registration route:** `/register/blessed-banquet`
+- **Supabase table:** `blessed_banquet_registrations`
 
 ---
 
-### 🟤 Event 3: Blessed Banquet
+## Registration Form Specification
 
-**Poster:** `/public/bishop.png`
+Create a **reusable registration form component** that accepts the event name and target table as props. Each event links to a separate registration page using the same form UI.
 
-**Description:**
-An exclusive dinner gathering fostering faith and fellowship, offering an opportunity to engage in meaningful dialogue with our spiritual leader.
+### Form Fields (all required):
+1. **Full Name** - Text input, placeholder: "Enter your full name"
+2. **Phone Number** - Text input, placeholder: "+91 12345 67890"
+3. **Email Address** - Email input, placeholder: "your.email@example.com"
+4. **State** - Text input, placeholder: "Enter your state"
+5. **Questions or Topics** - Textarea, placeholder: "Share any questions, doubts, or topics you'd like to discuss with the Bishop"
 
-**CTA Button:**
-👉 *Register Now*
-
----
-
-## 📝 Registration Form (Same UI, Same Fields for All Events)
-
-Each event opens a **separate page** with the same form UI, but submits to a **different Supabase table**.
-
-### Form Fields
-
-* **Full Name***
-  Placeholder: *Enter your full name*
-* **Phone Number***
-  Placeholder: *+91 12345 67890*
-* **Email Address***
-  Placeholder: *[your.email@example.com](mailto:your.email@example.com)*
-* **State***
-  Placeholder: *Enter your state*
-* **Questions or Topics You’d Like to Discuss***
-  Textarea
-  Placeholder: *Share any questions, doubts, or topics you'd like to discuss with the Bishop*
-
-**Submit Button:**
-✅ *Complete Registration*
-
-### Form Requirements
-
-* Client-side validation
-* Required field checks
-* Loading & success states
-* Error handling
-* Disable button on submit
-* Toast or inline confirmation on success
+### Form Behavior:
+- Implement client-side validation for all required fields
+- Validate email format and phone number format
+- Show loading state during submission
+- Disable submit button while submitting
+- Display success message/toast on successful submission
+- Display error message on failure
+- Clear form after successful submission
+- Submit button text: "Complete Registration"
 
 ---
 
-## 🗄️ Backend Logic (Supabase)
+## Supabase Database Schema
 
-* Create **three separate tables**:
+Create three tables with identical schemas:
+1. `coffee_with_bishop_registrations`
+2. `meet_the_strangers_registrations`
+3. `blessed_banquet_registrations`
 
-  * `coffee_with_bishop_registrations`
-  * `meet_the_strangers_registrations`
-  * `blessed_banquet_registrations`
+**Table columns:**
+- `id` - uuid, primary key, auto-generated
+- `full_name` - text, not null
+- `phone` - text, not null
+- `email` - text, not null
+- `state` - text, not null
+- `questions` - text, not null
+- `created_at` - timestamp with time zone, default now()
 
-Each table stores:
-
-* id (uuid)
-* full_name
-* phone
-* email
-* state
-* questions
-* created_at
-
----
-
-## 🛠 Admin Panel
-
-* Protected via Supabase Auth
-* Admin can:
-
-  * View registrations per event
-  * Filter / search
-  * Export data (optional)
-* Simple, clean dashboard UI
+Enable Row Level Security (RLS) on all tables:
+- Public can INSERT
+- Only authenticated admin users can SELECT
 
 ---
 
-## 🎨 UI / UX Guidelines
+## Admin Panel Requirements
 
-* Minimal, premium church-event aesthetic
-* Warm colors, outdoor vibe
-* Smooth hover effects
-* Subtle transitions
-* Fully responsive
-* Accessible form inputs
-
----
-
-## 🚀 Deliverables
-
-* Event landing page
-* Registration flow
-* Supabase integration
-* Admin panel
-* Clean, scalable code structure
+Create an admin dashboard at `/admin` with:
+- **Authentication:** Protected by Supabase Auth (redirect to login if not authenticated)
+- **Features:**
+  - View all registrations for each event in separate tabs or sections
+  - Display registrations in a table format with all fields
+  - Show registration count per event
+  - Basic search/filter functionality by name or email
+  - Sort by date (newest first by default)
+- **UI:** Clean, minimal dashboard design consistent with main site aesthetic
 
 ---
 
+## Design Guidelines
+
+- **Color scheme:** Warm, outdoor-inspired colors suitable for a church event
+- **Typography:** Clean, readable fonts with proper hierarchy
+- **Interactions:** Smooth hover effects and subtle transitions
+- **Responsiveness:** Mobile-first approach, test on mobile, tablet, and desktop
+- **Accessibility:** Proper labels, ARIA attributes, keyboard navigation support
+- **Images:** Ensure poster images are optimized and have proper alt text
+
+---
+
+## File Structure Expectations
+
+- Main landing page: `app/page.tsx`
+- Registration pages: `app/register/[event-slug]/page.tsx` (dynamic route)
+- Admin panel: `app/admin/page.tsx`
+- Reusable form component: `components/RegistrationForm.tsx`
+- Event card component: `components/EventCard.tsx`
+- Supabase client configuration: `lib/supabase.ts`
+- Type definitions: `types/registration.ts`
+
+---
+
+## Implementation Checklist
+
+1. Set up Next.js project with Tailwind CSS
+2. Configure Supabase client and environment variables
+3. Create database tables with RLS policies
+4. Build hero section
+5. Create EventCard component for reusable event display
+6. Build main landing page with all three events
+7. Create RegistrationForm component with validation
+8. Implement registration pages for each event
+9. Set up Supabase Auth for admin access
+10. Build admin dashboard with registration viewing functionality
+11. Test form submissions and data persistence
+12. Test responsive design across devices
+13. Verify admin authentication and data access
