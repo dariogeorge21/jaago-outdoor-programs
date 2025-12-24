@@ -5,7 +5,7 @@ export const events: EventConfig[] = [
     slug: 'coffee-with-bishop',
     name: 'Coffee with Bishop',
     tableName: 'coffee_with_bishop_registrations',
-    posterPath: '/bishop.png',
+    posterPath: '/coffee.jpeg',
     description:
       'An intimate gathering where faith meets fellowship. Share your thoughts, ask questions, and connect with our spiritual leader over a warm cup of coffee.',
     highlights: [
@@ -20,7 +20,7 @@ export const events: EventConfig[] = [
     slug: 'meet-the-strangers',
     name: 'Meet the Strangers',
     tableName: 'meet_the_strangers_registrations',
-    posterPath: '/strangers.png',
+    posterPath: '/strangers.jpeg',
     description:
       'Meet the strangers—connect, converse, and discover new perspectives through an interactive and welcoming session.',
     highlights: [
@@ -35,7 +35,7 @@ export const events: EventConfig[] = [
     slug: 'blessed-banquet',
     name: 'Blessed Banquet',
     tableName: 'blessed_banquet_registrations',
-    posterPath: '/banquete.png',
+    posterPath: '/banquete.jpeg',
     description:
       'An exclusive dinner gathering fostering faith and fellowship, offering an opportunity to engage in meaningful dialogue with our spiritual leader.',
     highlights: [

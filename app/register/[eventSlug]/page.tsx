@@ -73,7 +73,9 @@ export default async function RegisterPage({ params }: RegisterPageProps) {
                   src={event.posterPath}
                   alt={`${event.name} event poster`}
                   fill
-                  className="object-cover"
+                  className={
+                    event.slug === 'blessed-banquet' ? 'object-contain' : 'object-cover'
+                  }
                   priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>

@@ -27,7 +27,9 @@ export function EventCard({ event, imagePosition }: EventCardProps) {
             src={event.posterPath}
             alt={`${event.name} event poster`}
             fill
-            className="object-cover group-hover:scale-110 transition-transform duration-700"
+            className={`${
+              event.slug === 'blessed-banquet' ? 'object-contain' : 'object-cover'
+            } group-hover:scale-110 transition-transform duration-700`}
             sizes="(max-width: 768px) 100vw, 45vw"
             priority={false}
           />
