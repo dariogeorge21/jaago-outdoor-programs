@@ -58,8 +58,8 @@ export function Hero() {
             believers.
           </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          {/* CTA Button */}
+          <div className="flex items-center justify-center">
             <a
               href="#events"
               className="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-amber-600 to-amber-500 text-white font-semibold rounded-xl shadow-lg shadow-amber-500/30 hover:shadow-xl hover:shadow-amber-600/40 hover:scale-105 transition-all duration-300"
@@ -79,12 +79,6 @@ export function Hero() {
                   d="M17 8l4 4m0 0l-4 4m4-4H3"
                 />
               </svg>
-            </a>
-            <a
-              href="#events"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white/80 backdrop-blur-sm text-amber-700 font-semibold rounded-xl border-2 border-amber-600 hover:bg-amber-50 hover:scale-105 transition-all duration-300 shadow-sm"
-            >
-              Learn More
             </a>
           </div>
         </div>
