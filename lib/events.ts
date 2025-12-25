@@ -22,7 +22,7 @@ export const events: EventConfig[] = [
     tableName: 'meet_the_strangers_registrations',
     posterPath: '/strangers.jpeg',
     description:
-      'Meet the strangers—connect, converse, and discover new perspectives through an interactive and welcoming session.',
+      'Meet the Stranger is an engaging fellowship activity designed to help participants connect with people from different regions, build fellowship, and share the love of Christ in a joyful and creative environment.',
     highlights: [
       'Engage in meaningful conversations with new people',
       'Build connections and expand your community',
@@ -37,7 +37,7 @@ export const events: EventConfig[] = [
     tableName: 'blessed_banquet_registrations',
     posterPath: '/banquete.jpeg',
     description:
-      'An exclusive dinner gathering fostering faith and fellowship, offering an opportunity to engage in meaningful dialogue with our spiritual leader.',
+      'Join us for a night of faith, fellowship, and feasting at Blessed Banquet, a special dinner with our beloved bishop.Come share in a delicious meal, inspiring words, and warm community as we gather for a graceful talk blessings, and a chance to connect with one another',
     highlights: [
       'Enjoy a special dinner in a warm, welcoming atmosphere',
       'Engage in meaningful dialogue with our spiritual leader',
