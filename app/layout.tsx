@@ -11,7 +11,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Jaago Outdoor - Where Faith Meets Fellowship',
+  title: 'Jaago Outdoor Gala - Where Faith Meets Fellowship',
   description:
     'Join us for inspiring events designed to strengthen your faith, build community, and deepen your connection with God and fellow believers.',
 };

@@ -42,7 +42,7 @@ export function Hero() {
           {/* Main heading */}
           <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-gray-900 mb-6 leading-tight tracking-tight">
             <span className="block bg-gradient-to-r from-amber-600 via-amber-500 to-teal-600 bg-clip-text text-transparent">
-              Jaago Outdoor
+              Jaago Outdoor Gala
             </span>
           </h1>
 

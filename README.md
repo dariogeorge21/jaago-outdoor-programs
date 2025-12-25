@@ -1,6 +1,6 @@
-# Jaago Outdoor - Event Registration Website
+# Jaago Outdoor Gala - Event Registration Website
 
-A modern, responsive outdoor event webpage for "Jaago Outdoor" - a church program featuring three sub-events. Each sub-event has its own registration form that submits to a separate Supabase table.
+A modern, responsive outdoor event webpage for "Jaago Outdoor Gala" - a church program featuring three sub-events. Each sub-event has its own registration form that submits to a separate Supabase table.
 
 ## Features
 
@@ -193,4 +193,4 @@ npm start
 
 ## License
 
-Private project for Jaago Outdoor church program.
+Private project for Jaago Outdoor Gala church program.

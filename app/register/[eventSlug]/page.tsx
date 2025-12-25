@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: RegisterPageProps) {
   }
 
   return {
-    title: `Register for ${event.name} - Jaago Outdoor`,
+    title: `Register for ${event.name} - Jaago Outdoor Gala`,
     description: event.description,
   };
 }
