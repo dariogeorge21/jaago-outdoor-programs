@@ -9,10 +9,9 @@ export const events: EventConfig[] = [
     description:
       'An intimate gathering where faith meets fellowship. Share your thoughts, ask questions, and connect with our spiritual leader over a warm cup of coffee.',
     highlights: [
-      'Chat with a Bishop for over 30 minutes',
-      'Clarify doubts and deepen your love for God and the Church',
-      'Connect with fellow believers and strengthen your faith community',
-      'Come with an open heart and leave inspired',
+      'Engage in a heartfelt chat with Bishop',
+      'Graceful talk to clarify doubts and deepen your love for God and the Church',
+      'Gather in Christ, sharing the joy and the warmth of community',
     ],
     ctaText: 'Book Your Spot',
   },
